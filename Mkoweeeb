@@ -1,0 +1,38 @@
+from flask import Flask, render_template_string
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    name = "mko"
+    age = "ما يخصك"
+    sf = "ما يخصك"
+    html_code = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>صفحه مال م ادري شنو Flask</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f5f5f5;
+                color: #333;
+                text-align: center;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>شلونك العزيز ادري بيك ضايجه روحك من روحك</h1>
+        <p>اسمي: {{ name }}</p>
+        <p>عمري: {{ age }}</p>
+        <p>صف: {{ sf }}</p>
+        <u>مدري</u>
+    </body>
+    </html>
+    """
+    return render_template_string(html_code, name=name, age=age, sf=sf)
+
+if __name__ == "__main__":
+    # إضافة host و port لضمان عمله على Replit
+    app.run(host="0.0.0.0", port=8080)
